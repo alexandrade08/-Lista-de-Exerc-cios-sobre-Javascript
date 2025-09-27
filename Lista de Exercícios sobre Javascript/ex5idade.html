@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificação de Idade</title>
+</head>
+<body>
+  <h1>Questão 5: Verificação de Idade</h1>
+  <p>Abra o <strong>console (F12 → Console)</strong> para ver detalhes ou use os alertas.</p>
+
+  <script>
+    // Pede a idade do usuário
+    let idade = Number(prompt("Digite sua idade:"));
+
+    // Verifica a faixa etária
+    if (idade < 12 && idade >= 0) {
+      alert("Criança");
+      console.log("Idade:", idade, "- Criança");
+    } else if (idade >= 12 && idade <= 17) {
+      alert("Adolescente");
+      console.log("Idade:", idade, "- Adolescente");
+    } else if (idade >= 18) {
+      alert("Adulto");
+      console.log("Idade:", idade, "- Adulto");
+    } else {
+      alert("Idade inválida!");
+      console.log("Idade inválida:", idade);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício Const</title>
+</head>
+<body>
+  <h1>Exercício: Uso de const</h1>
+  <p>Abra o <strong>console (F12 → aba Console)</strong> para ver os resultados e erros.</p>
+
+  <script>
+    // a) Constante PI
+    console.log("=== Exemplo A: Constante PI ===");
+    const PI = 3.14159;
+    console.log("Valor inicial de PI:", PI);
+
+    try {
+      PI = 3.14; // ❌ Tenta mudar o valor
+    } catch (erro) {
+      console.error("Erro ao tentar reatribuir PI:", erro.message);
+    }
+
+    // Explicação
+    console.log("Explicação: Como PI foi declarada com const, não pode ser reatribuída.");
+
+    // b) Constante SemanasDoAno sem valor inicial
+    console.log("=== Exemplo B: Constante SemanasDoAno ===");
+    try {
+      const SemanasDoAno; // ❌ Não pode declarar sem valor
+      SemanasDoAno = 52;
+    } catch (erro) {
+      console.error("Erro ao declarar const sem valor inicial:", erro.message);
+    }
+
+    // Explicação
+    console.log("Explicação: Constantes precisam ser inicializadas no momento da declaração.");
+  </script>
+</body>
+</html>

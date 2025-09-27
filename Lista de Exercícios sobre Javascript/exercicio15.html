@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 15 - Manipulação de Propriedades</title>
+</head>
+<body>
+    <h1>Exercício 15: Manipulação de Propriedades</h1>
+    <p>O resultado deste exercício está no console do desenvolvedor. Pressione F12 para abri-lo.</p>
+
+    <script>
+        console.log("--- Exercício 15: Manipulação de Propriedades ---");
+
+        const livro = {
+            titulo: "O Senhor dos Anéis",
+            autor: "J.R.R. Tolkien"
+        };
+        console.log("Objeto original:", livro);
+
+        // Adiciona dinamicamente a propriedade 'ano'.
+        livro.ano = 1954;
+        console.log("Após adicionar 'ano':", livro);
+
+        // Altera o 'titulo'.
+        livro.titulo = "A Sociedade do Anel";
+        console.log("Após alterar 'título':", livro);
+
+        // Exclui a propriedade 'autor'.
+        delete livro.autor;
+        console.log("Após excluir 'autor':", livro);
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Número Par ou Ímpar</title>
+</head>
+<body>
+  <h1>Questão 6: Número Par ou Ímpar</h1>
+  <p>Abra o <strong>console (F12 → Console)</strong> para ver detalhes ou use o alerta.</p>
+
+  <script>
+    // Solicita o número ao usuário
+    let numero = Number(prompt("Digite um número:"));
+
+    // Verifica se o número é par ou ímpar
+    if (numero % 2 === 0) {
+      alert("O número " + numero + " é PAR.");
+      console.log("O número", numero, "é PAR.");
+    } else {
+      alert("O número " + numero + " é ÍMPAR.");
+      console.log("O número", numero, "é ÍMPAR.");
+    }
+  </script>
+</body>
+</html>

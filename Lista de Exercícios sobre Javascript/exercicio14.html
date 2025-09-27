@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 14 - Método em Objeto</title>
+</head>
+<body>
+    <h1>Exercício 14: Método em Objeto</h1>
+    <p>O resultado deste exercício está no console do desenvolvedor. Pressione F12 para abri-lo.</p>
+
+    <script>
+        console.log("--- Exercício 14: Método em Objeto ---");
+
+        const carro = {
+            marca: "Fiat",
+            modelo: "Uno",
+            ano: 2010
+        };
+
+        // Adiciona ao objeto 'carro' um método 'descricao'.
+        carro.descricao = function() {
+            return `Marca: ${this.marca}, Modelo: ${this.modelo}, Ano: ${this.ano}`;
+        };
+
+        // Chama o método e mostra o resultado no console.
+        console.log(carro.descricao());
+    </script>
+</body>
+</html>

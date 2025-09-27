@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Resolução do Exercício 20</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+        .exercicio {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 5px solid #007bff;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .resultado {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #0056b3;
+        }
+        .resultado-tabuada {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Resolução do Exercício 20</h1>
+        <p style="text-align: center;">A seguir, os exercícios 5, 6, 7, 8 e 9 foram refeitos com formulários e exibição dos resultados na página.</p>
+
+        <div class="exercicio">
+            <h2>Exercício 5: Verificação de Idade</h2>
+            <label for="idade">Digite sua idade:</label>
+            <input type="number" id="idade" min="0">
+            <button id="btnVerificarIdade">Verificar</button>
+            <p class="resultado" id="resultadoIdade"></p>
+        </div>
+
+        <div class="exercicio">
+            <h2>Exercício 6: Número Par ou Ímpar</h2>
+            <label for="numeroParImpar">Digite um número:</label>
+            <input type="number" id="numeroParImpar">
+            <button id="btnVerificarParImpar">Verificar</button>
+            <p class="resultado" id="resultadoParImpar"></p>
+        </div>
+
+        <div class="exercicio">
+            <h2>Exercício 7: Nota de Aluno</h2>
+            <label for="nota">Digite a nota (0 a 10):</label>
+            <input type="number" id="nota" min="0" max="10" step="0.1">
+            <button id="btnVerificarNota">Verificar</button>
+            <p class="resultado" id="resultadoNota"></p>
+        </div>
+
+        <div class="exercicio">
+            <h2>Exercício 8: Positivo, Negativo ou Zero?</h2>
+            <label for="numeroTernario">Digite um número:</label>
+            <input type="number" id="numeroTernario">
+            <button id="btnVerificarTernario">Verificar</button>
+            <p class="resultado" id="resultadoTernario"></p>
+        </div>
+
+        <div class="exercicio">
+            <h2>Exercício 9: Tabuada com for</h2>
+            <label for="numeroTabuada">Digite um número:</label>
+            <input type="number" id="numeroTabuada">
+            <button id="btnGerarTabuada">Gerar Tabuada</button>
+            <div class="resultado-tabuada" id="resultadoTabuada"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- Lógica para o Exercício 5 ---
+        document.getElementById('btnVerificarIdade').addEventListener('click', () => {
+            const idade = parseInt(document.getElementById('idade').value);
+            const resultado = document.getElementById('resultadoIdade');
+            if (isNaN(idade)) {
+                resultado.textContent = 'Por favor, digite um valor válido.';
+                return;
+            }
+            if (idade < 12) {
+                resultado.textContent = 'Resultado: Criança';
+            } else if (idade >= 12 && idade <= 17) {
+                resultado.textContent = 'Resultado: Adolescente';
+            } else {
+                resultado.textContent = 'Resultado: Adulto';
+            }
+        });
+
+        // --- Lógica para o Exercício 6 ---
+        document.getElementById('btnVerificarParImpar').addEventListener('click', () => {
+            const numero = parseInt(document.getElementById('numeroParImpar').value);
+            const resultado = document.getElementById('resultadoParImpar');
+            if (isNaN(numero)) {
+                resultado.textContent = 'Por favor, digite um valor válido.';
+                return;
+            }
+            if (numero % 2 === 0) {
+                resultado.textContent = 'Resultado: O número é Par.';
+            } else {
+                resultado.textContent = 'Resultado: O número é Ímpar.';
+            }
+        });
+
+        // --- Lógica para o Exercício 7 ---
+        document.getElementById('btnVerificarNota').addEventListener('click', () => {
+            const nota = parseFloat(document.getElementById('nota').value);
+            const resultado = document.getElementById('resultadoNota');
+            if (isNaN(nota) || nota < 0 || nota > 10) {
+                resultado.textContent = 'Por favor, digite uma nota entre 0 e 10.';
+                return;
+            }
+            if (nota >= 7) {
+                resultado.textContent = 'Situação: Aprovado';
+            } else if (nota >= 5) {
+                resultado.textContent = 'Situação: Recuperação';
+            } else {
+                resultado.textContent = 'Situação: Reprovado';
+            }
+        });
+
+        // --- Lógica para o Exercício 8 ---
+        document.getElementById('btnVerificarTernario').addEventListener('click', () => {
+            const numero = parseInt(document.getElementById('numeroTernario').value);
+            const resultado = document.getElementById('resultadoTernario');
+            if (isNaN(numero)) {
+                resultado.textContent = 'Por favor, digite um valor válido.';
+                return;
+            }
+            const status = numero > 0 ? 'Positivo' : (numero < 0 ? 'Negativo' : 'Zero');
+            resultado.textContent = `Resultado: ${status}`;
+        });
+
+        // --- Lógica para o Exercício 9 ---
+        document.getElementById('btnGerarTabuada').addEventListener('click', () => {
+            const numero = parseInt(document.getElementById('numeroTabuada').value);
+            const resultadoDiv = document.getElementById('resultadoTabuada');
+            resultadoDiv.innerHTML = ''; // Limpa a tabuada anterior
+
+            if (isNaN(numero)) {
+                resultadoDiv.textContent = 'Por favor, digite um valor válido.';
+                return;
+            }
+            
+            for (let i = 1; i <= 10; i++) {
+                const linha = document.createElement('p');
+                linha.textContent = `${numero} x ${i} = ${numero * i}`;
+                resultadoDiv.appendChild(linha);
+            }
+        });
+    </script>
+</body>
+</html>

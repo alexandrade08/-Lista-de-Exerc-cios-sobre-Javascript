@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 21 - Controle de Fila</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 { 
+            color: #333; 
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+        }
+        .controle {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 250px;
+        }
+        button {
+            padding: 10px 18px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button#btnAtender {
+            background-color: #28a745;
+        }
+        button#btnAtender:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-left: 5px solid #007BFF;
+            border-radius: 4px;
+        }
+        #historico li {
+            border-left-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Parte 6 - Controle de Fila de Atendimento</h1>
+        <p>
+        <div class="controle">
+            <label for="nomePessoa"><strong>Nome:</strong></label>
+            <input type="text" id="nomePessoa" placeholder="Digite o nome da pessoa">
+            <button id="btnEntrar">Entrar na fila</button>
+            <button id="btnAtender">Atender Próximo</button>
+        </div>
+
+        <h3>Fila de Espera</h3>
+        <ul id="filaEspera"></ul>
+
+        <h3>Histórico de Atendimento</h3>
+        <ul id="historico"></ul>
+    </div>
+
+    <script>
+        // Vetores para armazenar as informações
+        const filaDeEspera = [];
+        const historicoAtendimento = [];
+
+        // Selecionando os elementos do HTML
+        const inputNome = document.getElementById('nomePessoa');
+        const btnEntrar = document.getElementById('btnEntrar');
+        const btnAtender = document.getElementById('btnAtender');
+        const listaFila = document.getElementById('filaEspera');
+        const listaHistorico = document.getElementById('historico');
+
+        // Função para formatar data e hora
+        const formatadorData = new Intl.DateTimeFormat('pt-BR', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+
+        // Função para atualizar a exibição na tela
+        function atualizarTela() {
+            listaFila.innerHTML = '';
+            listaHistorico.innerHTML = '';
+            
+            filaDeEspera.forEach(pessoa => {
+                const li = document.createElement('li');
+                li.textContent = `${pessoa.nome} - Chegou às: ${formatadorData.format(pessoa.entrada)}`;
+                listaFila.appendChild(li);
+            });
+
+            historicoAtendimento.forEach(atendimento => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>Nome:</strong> ${atendimento.nome} <br>
+                    <strong>Entrada:</strong> ${formatadorData.format(atendimento.entrada)} | 
+                    <strong>Atendido em:</strong> ${formatadorData.format(atendimento.saida)} <br>
+                    <strong>Tempo de espera:</strong> ${atendimento.tempoEspera}
+                `;
+                listaHistorico.appendChild(li);
+            });
+        }
+
+        // Evento para o botão "Entrar na fila"
+        btnEntrar.addEventListener('click', () => {
+            const nome = inputNome.value.trim();
+            if (!nome) { // Checa se o nome é vazio
+                alert("Por favor, digite um nome.");
+                return;
+            }
+            
+            filaDeEspera.push({
+                nome: nome,
+                entrada: Date.now()
+            });
+            
+            inputNome.value = '';
+            inputNome.focus(); // Coloca o cursor de volta no campo de nome
+            atualizarTela();
+        });
+        
+        // Evento para o botão "Atender"
+        btnAtender.addEventListener('click', () => {
+            if (filaDeEspera.length === 0) {
+                alert("Não há ninguém na fila para atender.");
+                return;
+            }
+            
+            const pessoaAtendida = filaDeEspera.shift(); // Remove o primeiro da fila
+            const horaSaida = Date.now();
+            const tempoTotalMs = horaSaida - pessoaAtendida.entrada;
+            
+            const segundos = Math.floor((tempoTotalMs / 1000) % 60);
+            const minutos = Math.floor((tempoTotalMs / (1000 * 60)) % 60);
+            
+            historicoAtendimento.push({
+                nome: pessoaAtendida.nome,
+                entrada: pessoaAtendida.entrada,
+                saida: horaSaida,
+                tempoEspera: `${minutos} minutos e ${segundos} segundos`
+            });
+            
+            atualizarTela();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Percorrendo Objetos com for...in</title>
+</head>
+<body>
+  <h1>Questão 11: Objeto Pessoa</h1>
+  <script>
+    let pessoa = {
+      nome: "Ana",
+      idade: 25,
+      cidade: "São Paulo"
+    };
+
+    console.log("Propriedades e valores do objeto pessoa:");
+    for (let chave in pessoa) {
+      console.log(chave + ": " + pessoa[chave]);
+    }
+  </script>
+</body>
+</html>

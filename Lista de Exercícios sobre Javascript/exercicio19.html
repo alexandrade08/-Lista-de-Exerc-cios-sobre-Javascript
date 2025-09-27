@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 19 - Encadeando Métodos</title>
+</head>
+<body>
+    <h1>Exercício 19: Encadeando Métodos</h1>
+    <p>O resultado deste exercício está no console do desenvolvedor. Pressione F12 para abri-lo.</p>
+
+    <script>
+        console.log("--- Exercício 19: Encadeando Métodos ---");
+
+        const arrayOriginalEncadeado = [2, 5, 8, 11, 14];
+        
+        const resultadoEncadeado = arrayOriginalEncadeado
+            .filter(numero => numero > 5)   // Primeiro, filtra os números maiores que 5: [8, 11, 14]
+            .map(numero => numero * 2);     // Depois, multiplica cada um por 2: [16, 22, 28]
+
+        console.log("Array original:", arrayOriginalEncadeado);
+        console.log("Resultado final (filtrado e multiplicado):", resultadoEncadeado);
+    </script>
+</body>
+</html>

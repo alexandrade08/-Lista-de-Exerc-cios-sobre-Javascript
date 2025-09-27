@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 7 - Nota de Aluno</title>
+</head>
+<body>
+    <h1>Exercício 7: Nota de Aluno</h1>
+    <p>O navegador pedirá que você digite uma nota via caixa de diálogo (prompt). O resultado será exibido no Console (F12).</p>
+    
+    <script>
+        // 7. Nota de Aluno:
+        console.log("--- 7. Nota de Aluno ---");
+        
+        // Recebe a nota do usuário (string) e converte para número decimal (float)
+        let nota = prompt("Exercício 7: Digite a nota de 0 a 10:");
+        nota = parseFloat(nota); 
+
+        if (nota >= 7) {
+            console.log(`Nota ${nota}: Aprovado`);
+        } else if (nota >= 5 && nota < 7) {
+            console.log(`Nota ${nota}: Recuperação`);
+        } else if (nota < 5) {
+            console.log(`Nota ${nota}: Reprovado`);
+        } else {
+             console.log("Nota inválida informada.");
+        }
+        
+        console.log("------------------------");
+    </script>
+</body>
+</html>

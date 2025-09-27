@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício: Diferença de Escopo</title>
+</head>
+<body>
+  <h1>Exercício: Diferença de Escopo (let)</h1>
+  <p>Abra o <strong>console (F12 → Console)</strong> para ver o resultado.</p>
+
+  <script>
+    // Variável declarada fora do bloco
+    let numero = 10;
+    console.log("Valor de numero fora do bloco:", numero);
+
+    {
+      // Variável declarada novamente dentro do bloco
+      let numero = 20;
+      console.log("Valor de numero dentro do bloco:", numero);
+    }
+
+    // Fora do bloco continua valendo o valor original
+    console.log("Valor de numero fora do bloco após o bloco:", numero);
+  </script>
+</body>
+</html>
